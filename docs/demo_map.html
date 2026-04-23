@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_19b6a6147426b6c9e26f1fe215fc994a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_19b6a6147426b6c9e26f1fe215fc994a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_19b6a6147426b6c9e26f1fe215fc994a = L.map(
+                "map_19b6a6147426b6c9e26f1fe215fc994a",
+                {
+                    center: [40.1261, -82.9291],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_08d3abd581a8b76487a915cb129bbb34 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_08d3abd581a8b76487a915cb129bbb34.addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+        
+    
+            var marker_4f08e3f93ce4fb994d2920390cbeb576 = L.marker(
+                [40.1261, -82.9291],
+                {
+}
+            ).addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+        
+    
+            var icon_453f3406e478961bda2998a69042ea16 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_4f08e3f93ce4fb994d2920390cbeb576.bindTooltip(
+                `<div>
+                     Westerville, OH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4f08e3f93ce4fb994d2920390cbeb576.setIcon(icon_453f3406e478961bda2998a69042ea16);
+            
+    
+            var circle_8d6760f914b7333235d140c66f358244 = L.circle(
+                [40.1261, -82.9291],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#1f77b4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 64373.76, "stroke": true, "weight": 2}
+            ).addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+        
+    
+            circle_8d6760f914b7333235d140c66f358244.bindTooltip(
+                `<div>
+                     40 mi screening radius
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        function geo_json_f7c18bdc05d1332525e54680b1cbdd05_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2a9d8f", "fillColor": "#2a9d8f", "fillOpacity": 0.35, "weight": 0};
+            }
+        }
+
+        function geo_json_f7c18bdc05d1332525e54680b1cbdd05_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_f7c18bdc05d1332525e54680b1cbdd05 = L.geoJson(null, {
+                onEachFeature: geo_json_f7c18bdc05d1332525e54680b1cbdd05_onEachFeature,
+            
+                style: geo_json_f7c18bdc05d1332525e54680b1cbdd05_styler,
+            ...{
+}
+        });
+
+        function geo_json_f7c18bdc05d1332525e54680b1cbdd05_add (data) {
+            geo_json_f7c18bdc05d1332525e54680b1cbdd05
+                .addData(data);
+        }
+            geo_json_f7c18bdc05d1332525e54680b1cbdd05_add({"bbox": [-83.2, 40.06, -82.86, 40.26], "features": [{"bbox": [-83.2, 40.06, -82.92, 40.14], "geometry": {"coordinates": [[[-83.2, 40.06], [-82.92, 40.06], [-82.92, 40.14], [-83.2, 40.14], [-83.2, 40.06]]], "type": "Polygon"}, "id": "0", "properties": {"favorability": "high", "unit_name": "Scioto River outwash"}, "type": "Feature"}, {"bbox": [-83.0, 40.17, -82.94, 40.26], "geometry": {"coordinates": [[[-83.0, 40.17], [-82.94, 40.17], [-82.94, 40.26], [-83.0, 40.26], [-83.0, 40.17]]], "type": "Polygon"}, "id": "1", "properties": {"favorability": "high", "unit_name": "Alum Creek alluvium"}, "type": "Feature"}, {"bbox": [-82.91, 40.14, -82.86, 40.17], "geometry": {"coordinates": [[[-82.91, 40.14], [-82.86, 40.14], [-82.86, 40.17], [-82.91, 40.17], [-82.91, 40.14]]], "type": "Polygon"}, "id": "3", "properties": {"favorability": "high", "unit_name": "Kame complex (Hoover area)"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_f7c18bdc05d1332525e54680b1cbdd05.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["unit_name", "favorability"];
+    let aliases = ["unit_name", "favorability"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_f7c18bdc05d1332525e54680b1cbdd05.addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+        
+    
+        function geo_json_e50738078e23e484cb7b6d503695358f_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#e9c46a", "fillColor": "#e9c46a", "fillOpacity": 0.35, "weight": 0};
+            }
+        }
+
+        function geo_json_e50738078e23e484cb7b6d503695358f_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_e50738078e23e484cb7b6d503695358f = L.geoJson(null, {
+                onEachFeature: geo_json_e50738078e23e484cb7b6d503695358f_onEachFeature,
+            
+                style: geo_json_e50738078e23e484cb7b6d503695358f_styler,
+            ...{
+}
+        });
+
+        function geo_json_e50738078e23e484cb7b6d503695358f_add (data) {
+            geo_json_e50738078e23e484cb7b6d503695358f
+                .addData(data);
+        }
+            geo_json_e50738078e23e484cb7b6d503695358f_add({"bbox": [-82.92, 40.15, -82.83, 40.22], "features": [{"bbox": [-82.92, 40.15, -82.83, 40.22], "geometry": {"coordinates": [[[-82.92, 40.15], [-82.83, 40.15], [-82.83, 40.22], [-82.92, 40.22], [-82.92, 40.15]]], "type": "Polygon"}, "id": "2", "properties": {"favorability": "medium", "unit_name": "Big Walnut terrace"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e50738078e23e484cb7b6d503695358f.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["unit_name", "favorability"];
+    let aliases = ["unit_name", "favorability"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_e50738078e23e484cb7b6d503695358f.addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+        
+    
+        function geo_json_869a56dba209ba76010785d88eb5514d_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#adb5bd", "fillColor": "#adb5bd", "fillOpacity": 0.12, "weight": 0};
+            }
+        }
+
+        function geo_json_869a56dba209ba76010785d88eb5514d_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_869a56dba209ba76010785d88eb5514d = L.geoJson(null, {
+                onEachFeature: geo_json_869a56dba209ba76010785d88eb5514d_onEachFeature,
+            
+                style: geo_json_869a56dba209ba76010785d88eb5514d_styler,
+            ...{
+}
+        });
+
+        function geo_json_869a56dba209ba76010785d88eb5514d_add (data) {
+            geo_json_869a56dba209ba76010785d88eb5514d
+                .addData(data);
+        }
+            geo_json_869a56dba209ba76010785d88eb5514d_add({"bbox": [-82.98, 39.98, -82.55, 40.32], "features": [{"bbox": [-82.8, 40.2, -82.55, 40.32], "geometry": {"coordinates": [[[-82.8, 40.2], [-82.55, 40.2], [-82.55, 40.32], [-82.8, 40.32], [-82.8, 40.2]]], "type": "Polygon"}, "id": "4", "properties": {"favorability": "low", "unit_name": "Ground moraine till"}, "type": "Feature"}, {"bbox": [-82.98, 39.98, -82.86, 40.06], "geometry": {"coordinates": [[[-82.98, 39.98], [-82.86, 39.98], [-82.86, 40.06], [-82.98, 40.06], [-82.98, 39.98]]], "type": "Polygon"}, "id": "5", "properties": {"favorability": "low", "unit_name": "Lacustrine clay"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_869a56dba209ba76010785d88eb5514d.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["unit_name", "favorability"];
+    let aliases = ["unit_name", "favorability"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            var feature_group_303a7709d0aab908f2ae1712bfcffe5c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_0acab76cb699db563745268d88b769d7 = L.circleMarker(
+                [40.08, -83.12],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+        
+    
+        var popup_62fd39bc62050d2ef3074de74be6f955 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a74bd9f0bcbedcace812ef3c73cc6895 = $(`<div id="html_a74bd9f0bcbedcace812ef3c73cc6895" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/scioto' target='_blank'>Scioto outwash parcel (demo)</a></b><br>Score: 0.90<br>Distance: 10.6 mi<br>Acres: 85.0<br>Price: $900,000<br>Est. volume: 1,916,783 yd³ (2,683,496 tons)<br>$/ton: $0.34</div>`)[0];
+                popup_62fd39bc62050d2ef3074de74be6f955.setContent(html_a74bd9f0bcbedcace812ef3c73cc6895);
+            
+        
+
+        circle_marker_0acab76cb699db563745268d88b769d7.bindPopup(popup_62fd39bc62050d2ef3074de74be6f955)
+        ;
+
+        
+    
+    
+            var circle_marker_cdebf558cda27a144bdfdfb22b816c0a = L.circleMarker(
+                [40.21, -82.98],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+        
+    
+        var popup_40d59b910f51c42b58bb647451071b2d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_72a529538a1b394819b03a904db2feb0 = $(`<div id="html_72a529538a1b394819b03a904db2feb0" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/alum' target='_blank'>Alum Creek tract (demo)</a></b><br>Score: 0.74<br>Distance: 6.4 mi<br>Acres: 55.0<br>Price: $650,000<br>Est. volume: 1,240,271 yd³ (1,736,380 tons)<br>$/ton: $0.37</div>`)[0];
+                popup_40d59b910f51c42b58bb647451071b2d.setContent(html_72a529538a1b394819b03a904db2feb0);
+            
+        
+
+        circle_marker_cdebf558cda27a144bdfdfb22b816c0a.bindPopup(popup_40d59b910f51c42b58bb647451071b2d)
+        ;
+
+        
+    
+    
+            var circle_marker_590b77700e18f6e65b615a686b385ee9 = L.circleMarker(
+                [40.15, -82.89],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+        
+    
+        var popup_66865fd0790cacb23b8d270243580246 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_43bec4b3715f82db22fce43898d9c340 = $(`<div id="html_43bec4b3715f82db22fce43898d9c340" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/hoover' target='_blank'>Hoover reservoir edge (demo)</a></b><br>Score: 0.51<br>Distance: 2.6 mi<br>Acres: 22.0<br>Price: $550,000<br>Est. volume: 619,325 yd³ (867,055 tons)<br>$/ton: $0.63</div>`)[0];
+                popup_66865fd0790cacb23b8d270243580246.setContent(html_43bec4b3715f82db22fce43898d9c340);
+            
+        
+
+        circle_marker_590b77700e18f6e65b615a686b385ee9.bindPopup(popup_66865fd0790cacb23b8d270243580246)
+        ;
+
+        
+    
+    
+            var circle_marker_a9d47ef260479c73cf6477dcf5609992 = L.circleMarker(
+                [40.18, -82.87],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+        
+    
+        var popup_a71c9ef503e29708ca3cd1a22805b2f4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d1e4c4f26ed442905f8bc3a2458763a5 = $(`<div id="html_d1e4c4f26ed442905f8bc3a2458763a5" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/bigwalnut' target='_blank'>Big Walnut bottomland (demo)</a></b><br>Score: 0.33<br>Distance: 4.9 mi<br>Acres: 32.0<br>Price: $420,000<br>Est. volume: 360,806 yd³ (505,129 tons)<br>$/ton: $0.83</div>`)[0];
+                popup_a71c9ef503e29708ca3cd1a22805b2f4.setContent(html_d1e4c4f26ed442905f8bc3a2458763a5);
+            
+        
+
+        circle_marker_a9d47ef260479c73cf6477dcf5609992.bindPopup(popup_a71c9ef503e29708ca3cd1a22805b2f4)
+        ;
+
+        
+    
+    
+            var circle_marker_e7ad1389a3a2330a7a9d6ac3428577bd = L.circleMarker(
+                [40.03, -82.93],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+        
+    
+        var popup_7d1ed5b3193c293d0faf6c6ed014d497 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ab752b49ed5332e94c18b9ae35ae095a = $(`<div id="html_ab752b49ed5332e94c18b9ae35ae095a" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/south' target='_blank'>South of town (demo)</a></b><br>Score: 0.30<br>Distance: 6.6 mi<br>Acres: 48.0<br>Price: $310,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
+                popup_7d1ed5b3193c293d0faf6c6ed014d497.setContent(html_ab752b49ed5332e94c18b9ae35ae095a);
+            
+        
+
+        circle_marker_e7ad1389a3a2330a7a9d6ac3428577bd.bindPopup(popup_7d1ed5b3193c293d0faf6c6ed014d497)
+        ;
+
+        
+    
+    
+            var circle_marker_e0abba6c3fcebb35f0cead3c8c459f35 = L.circleMarker(
+                [40.26, -82.7],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+        
+    
+        var popup_bf67b810bf45682adeb55bd0440e98f7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_fe8e47fef646cf4af43091ed8637ef57 = $(`<div id="html_fe8e47fef646cf4af43091ed8637ef57" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/till' target='_blank'>Till upland (demo)</a></b><br>Score: 0.20<br>Distance: 15.2 mi<br>Acres: 40.0<br>Price: $280,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
+                popup_bf67b810bf45682adeb55bd0440e98f7.setContent(html_fe8e47fef646cf4af43091ed8637ef57);
+            
+        
+
+        circle_marker_e0abba6c3fcebb35f0cead3c8c459f35.bindPopup(popup_bf67b810bf45682adeb55bd0440e98f7)
+        ;
+
+        
+    
+    
+            var circle_marker_bdf92a6028e54102fb67f968746e1522 = L.circleMarker(
+                [40.18, -82.5],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+        
+    
+        var popup_ac656a4d799eb1b0da5606aa4b977b7c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_534f49a203e7ae80e0a48d11ad030500 = $(`<div id="html_534f49a203e7ae80e0a48d11ad030500" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/east' target='_blank'>Far east (demo)</a></b><br>Score: 0.10<br>Distance: 23.0 mi<br>Acres: 70.0<br>Price: $190,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
+                popup_ac656a4d799eb1b0da5606aa4b977b7c.setContent(html_534f49a203e7ae80e0a48d11ad030500);
+            
+        
+
+        circle_marker_bdf92a6028e54102fb67f968746e1522.bindPopup(popup_ac656a4d799eb1b0da5606aa4b977b7c)
+        ;
+
+        
+    
+    
+            feature_group_303a7709d0aab908f2ae1712bfcffe5c.addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+        
+    
+            var layer_control_150df99cce80d1c826257b1be3a308ce_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_08d3abd581a8b76487a915cb129bbb34,
+                },
+                overlays :  {
+                    "Geology: high favorability" : geo_json_f7c18bdc05d1332525e54680b1cbdd05,
+                    "Geology: medium favorability" : geo_json_e50738078e23e484cb7b6d503695358f,
+                    "Geology: low favorability" : geo_json_869a56dba209ba76010785d88eb5514d,
+                    "Listings" : feature_group_303a7709d0aab908f2ae1712bfcffe5c,
+                },
+            };
+            let layer_control_150df99cce80d1c826257b1be3a308ce = L.control.layers(
+                layer_control_150df99cce80d1c826257b1be3a308ce_layers.base_layers,
+                layer_control_150df99cce80d1c826257b1be3a308ce_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+
+        
+</script>
+</html>

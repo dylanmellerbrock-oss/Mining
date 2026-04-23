@@ -9,7 +9,11 @@ Run: python scripts/build_demo.py
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
 
 import geopandas as gpd
 import pandas as pd
@@ -17,7 +21,6 @@ from shapely.geometry import Polygon
 
 from quarry_screen import analysis, config, mapview
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT = REPO_ROOT / "docs" / "demo_map.html"
 
 
