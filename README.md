@@ -39,6 +39,18 @@ Or do it all in one go:
 quarry-screen run-all --radius-mi 40 --min-acres 20 --thickness-ft 20 --recovery 0.7
 ```
 
+### Interactive dashboard
+
+```
+pip install -e .[ui]
+quarry-screen ui            # opens a Streamlit dashboard on :8501
+```
+
+The dashboard lets you toggle layers, tweak radius/thickness/recovery
+sliders, and see the ranked parcels + map update live. If no real ODGS
+caches are present, pick **Demo data** in the sidebar to run against the
+synthetic Westerville fixtures.
+
 ## How it works
 
 1. **Surficial geology** — downloads ODGS glacial/surficial polygons,

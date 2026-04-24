@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import logging
+import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -201,6 +203,24 @@ def cmd_run_all(
         recovery=recovery,
         output=config.OUTPUT_DIR,
     )
+
+
+@cli.command("ui")
+@click.option("--port", type=int, default=8501, show_default=True)
+@click.option("--host", default="0.0.0.0", show_default=True)
+def cmd_ui(port: int, host: str) -> None:
+    """Launch the Streamlit dashboard."""
+    app = Path(__file__).resolve().parent / "ui.py"
+    env = os.environ.copy()
+    env.setdefault("STREAMLIT_SERVER_HEADLESS", "true")
+    env.setdefault("STREAMLIT_BROWSER_GATHER_USAGE_STATS", "false")
+    cmd = [
+        sys.executable, "-m", "streamlit", "run", str(app),
+        "--server.port", str(port),
+        "--server.address", host,
+    ]
+    click.echo(f"Launching UI on http://{host}:{port}  (Ctrl-C to stop)")
+    subprocess.run(cmd, env=env, check=False)
 
 
 if __name__ == "__main__":

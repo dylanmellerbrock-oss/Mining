@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_19b6a6147426b6c9e26f1fe215fc994a {
+                #map_a20d7c18f2ca09aa886e62c1672fb4e5 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -102,14 +102,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_19b6a6147426b6c9e26f1fe215fc994a" ></div>
+            <div class="folium-map" id="map_a20d7c18f2ca09aa886e62c1672fb4e5" ></div>
         
 </body>
 <script>
     
     
-            var map_19b6a6147426b6c9e26f1fe215fc994a = L.map(
-                "map_19b6a6147426b6c9e26f1fe215fc994a",
+            var map_a20d7c18f2ca09aa886e62c1672fb4e5 = L.map(
+                "map_a20d7c18f2ca09aa886e62c1672fb4e5",
                 {
                     center: [40.1261, -82.9291],
                     crs: L.CRS.EPSG3857,
@@ -126,7 +126,7 @@
 
         
     
-            var tile_layer_08d3abd581a8b76487a915cb129bbb34 = L.tileLayer(
+            var tile_layer_8b6a0ad4d14c80b09628c5622308919e = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -143,17 +143,17 @@
             );
         
     
-            tile_layer_08d3abd581a8b76487a915cb129bbb34.addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+            tile_layer_8b6a0ad4d14c80b09628c5622308919e.addTo(map_a20d7c18f2ca09aa886e62c1672fb4e5);
         
     
-            var marker_4f08e3f93ce4fb994d2920390cbeb576 = L.marker(
+            var marker_5ae04a0d7cf8f8111e12a9eb3b3cbbde = L.marker(
                 [40.1261, -82.9291],
                 {
 }
-            ).addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+            ).addTo(map_a20d7c18f2ca09aa886e62c1672fb4e5);
         
     
-            var icon_453f3406e478961bda2998a69042ea16 = L.AwesomeMarkers.icon(
+            var icon_4656686de0474c1783ba8d70e99ba378 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -164,7 +164,7 @@
             );
         
     
-            marker_4f08e3f93ce4fb994d2920390cbeb576.bindTooltip(
+            marker_5ae04a0d7cf8f8111e12a9eb3b3cbbde.bindTooltip(
                 `<div>
                      Westerville, OH
                  </div>`,
@@ -174,16 +174,16 @@
             );
         
     
-                marker_4f08e3f93ce4fb994d2920390cbeb576.setIcon(icon_453f3406e478961bda2998a69042ea16);
+                marker_5ae04a0d7cf8f8111e12a9eb3b3cbbde.setIcon(icon_4656686de0474c1783ba8d70e99ba378);
             
     
-            var circle_8d6760f914b7333235d140c66f358244 = L.circle(
+            var circle_4906c14584e5cf62adde06a03cfd7fa6 = L.circle(
                 [40.1261, -82.9291],
                 {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#1f77b4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 64373.76, "stroke": true, "weight": 2}
-            ).addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+            ).addTo(map_a20d7c18f2ca09aa886e62c1672fb4e5);
         
     
-            circle_8d6760f914b7333235d140c66f358244.bindTooltip(
+            circle_4906c14584e5cf62adde06a03cfd7fa6.bindTooltip(
                 `<div>
                      40 mi screening radius
                  </div>`,
@@ -193,35 +193,35 @@
             );
         
     
-        function geo_json_f7c18bdc05d1332525e54680b1cbdd05_styler(feature) {
+        function geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d_styler(feature) {
             switch(feature.id) {
                 default:
                     return {"color": "#2a9d8f", "fillColor": "#2a9d8f", "fillOpacity": 0.35, "weight": 0};
             }
         }
 
-        function geo_json_f7c18bdc05d1332525e54680b1cbdd05_onEachFeature(feature, layer) {
+        function geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d_onEachFeature(feature, layer) {
 
             layer.on({
             });
         };
-        var geo_json_f7c18bdc05d1332525e54680b1cbdd05 = L.geoJson(null, {
-                onEachFeature: geo_json_f7c18bdc05d1332525e54680b1cbdd05_onEachFeature,
+        var geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d = L.geoJson(null, {
+                onEachFeature: geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d_onEachFeature,
             
-                style: geo_json_f7c18bdc05d1332525e54680b1cbdd05_styler,
+                style: geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d_styler,
             ...{
 }
         });
 
-        function geo_json_f7c18bdc05d1332525e54680b1cbdd05_add (data) {
-            geo_json_f7c18bdc05d1332525e54680b1cbdd05
+        function geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d_add (data) {
+            geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d
                 .addData(data);
         }
-            geo_json_f7c18bdc05d1332525e54680b1cbdd05_add({"bbox": [-83.2, 40.06, -82.86, 40.26], "features": [{"bbox": [-83.2, 40.06, -82.92, 40.14], "geometry": {"coordinates": [[[-83.2, 40.06], [-82.92, 40.06], [-82.92, 40.14], [-83.2, 40.14], [-83.2, 40.06]]], "type": "Polygon"}, "id": "0", "properties": {"favorability": "high", "unit_name": "Scioto River outwash"}, "type": "Feature"}, {"bbox": [-83.0, 40.17, -82.94, 40.26], "geometry": {"coordinates": [[[-83.0, 40.17], [-82.94, 40.17], [-82.94, 40.26], [-83.0, 40.26], [-83.0, 40.17]]], "type": "Polygon"}, "id": "1", "properties": {"favorability": "high", "unit_name": "Alum Creek alluvium"}, "type": "Feature"}, {"bbox": [-82.91, 40.14, -82.86, 40.17], "geometry": {"coordinates": [[[-82.91, 40.14], [-82.86, 40.14], [-82.86, 40.17], [-82.91, 40.17], [-82.91, 40.14]]], "type": "Polygon"}, "id": "3", "properties": {"favorability": "high", "unit_name": "Kame complex (Hoover area)"}, "type": "Feature"}], "type": "FeatureCollection"});
+            geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d_add({"bbox": [-83.2, 40.06, -82.86, 40.26], "features": [{"bbox": [-83.2, 40.06, -82.92, 40.14], "geometry": {"coordinates": [[[-83.2, 40.06], [-82.92, 40.06], [-82.92, 40.14], [-83.2, 40.14], [-83.2, 40.06]]], "type": "Polygon"}, "id": "0", "properties": {"favorability": "high", "unit_name": "Scioto River outwash"}, "type": "Feature"}, {"bbox": [-83.0, 40.17, -82.94, 40.26], "geometry": {"coordinates": [[[-83.0, 40.17], [-82.94, 40.17], [-82.94, 40.26], [-83.0, 40.26], [-83.0, 40.17]]], "type": "Polygon"}, "id": "1", "properties": {"favorability": "high", "unit_name": "Alum Creek alluvium"}, "type": "Feature"}, {"bbox": [-82.91, 40.14, -82.86, 40.17], "geometry": {"coordinates": [[[-82.91, 40.14], [-82.86, 40.14], [-82.86, 40.17], [-82.91, 40.17], [-82.91, 40.14]]], "type": "Polygon"}, "id": "3", "properties": {"favorability": "high", "unit_name": "Kame complex (Hoover area)"}, "type": "Feature"}], "type": "FeatureCollection"});
 
         
     
-    geo_json_f7c18bdc05d1332525e54680b1cbdd05.bindTooltip(
+    geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d.bindTooltip(
     function(layer){
     let div = L.DomUtil.create('div');
     
@@ -256,38 +256,38 @@
 });
                      
     
-            geo_json_f7c18bdc05d1332525e54680b1cbdd05.addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+            geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d.addTo(map_a20d7c18f2ca09aa886e62c1672fb4e5);
         
     
-        function geo_json_e50738078e23e484cb7b6d503695358f_styler(feature) {
+        function geo_json_cafd5c265d93a5cf37b6e7200e9caa6d_styler(feature) {
             switch(feature.id) {
                 default:
                     return {"color": "#e9c46a", "fillColor": "#e9c46a", "fillOpacity": 0.35, "weight": 0};
             }
         }
 
-        function geo_json_e50738078e23e484cb7b6d503695358f_onEachFeature(feature, layer) {
+        function geo_json_cafd5c265d93a5cf37b6e7200e9caa6d_onEachFeature(feature, layer) {
 
             layer.on({
             });
         };
-        var geo_json_e50738078e23e484cb7b6d503695358f = L.geoJson(null, {
-                onEachFeature: geo_json_e50738078e23e484cb7b6d503695358f_onEachFeature,
+        var geo_json_cafd5c265d93a5cf37b6e7200e9caa6d = L.geoJson(null, {
+                onEachFeature: geo_json_cafd5c265d93a5cf37b6e7200e9caa6d_onEachFeature,
             
-                style: geo_json_e50738078e23e484cb7b6d503695358f_styler,
+                style: geo_json_cafd5c265d93a5cf37b6e7200e9caa6d_styler,
             ...{
 }
         });
 
-        function geo_json_e50738078e23e484cb7b6d503695358f_add (data) {
-            geo_json_e50738078e23e484cb7b6d503695358f
+        function geo_json_cafd5c265d93a5cf37b6e7200e9caa6d_add (data) {
+            geo_json_cafd5c265d93a5cf37b6e7200e9caa6d
                 .addData(data);
         }
-            geo_json_e50738078e23e484cb7b6d503695358f_add({"bbox": [-82.92, 40.15, -82.83, 40.22], "features": [{"bbox": [-82.92, 40.15, -82.83, 40.22], "geometry": {"coordinates": [[[-82.92, 40.15], [-82.83, 40.15], [-82.83, 40.22], [-82.92, 40.22], [-82.92, 40.15]]], "type": "Polygon"}, "id": "2", "properties": {"favorability": "medium", "unit_name": "Big Walnut terrace"}, "type": "Feature"}], "type": "FeatureCollection"});
+            geo_json_cafd5c265d93a5cf37b6e7200e9caa6d_add({"bbox": [-82.92, 40.15, -82.83, 40.22], "features": [{"bbox": [-82.92, 40.15, -82.83, 40.22], "geometry": {"coordinates": [[[-82.92, 40.15], [-82.83, 40.15], [-82.83, 40.22], [-82.92, 40.22], [-82.92, 40.15]]], "type": "Polygon"}, "id": "2", "properties": {"favorability": "medium", "unit_name": "Big Walnut terrace"}, "type": "Feature"}], "type": "FeatureCollection"});
 
         
     
-    geo_json_e50738078e23e484cb7b6d503695358f.bindTooltip(
+    geo_json_cafd5c265d93a5cf37b6e7200e9caa6d.bindTooltip(
     function(layer){
     let div = L.DomUtil.create('div');
     
@@ -322,38 +322,38 @@
 });
                      
     
-            geo_json_e50738078e23e484cb7b6d503695358f.addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+            geo_json_cafd5c265d93a5cf37b6e7200e9caa6d.addTo(map_a20d7c18f2ca09aa886e62c1672fb4e5);
         
     
-        function geo_json_869a56dba209ba76010785d88eb5514d_styler(feature) {
+        function geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f_styler(feature) {
             switch(feature.id) {
                 default:
                     return {"color": "#adb5bd", "fillColor": "#adb5bd", "fillOpacity": 0.12, "weight": 0};
             }
         }
 
-        function geo_json_869a56dba209ba76010785d88eb5514d_onEachFeature(feature, layer) {
+        function geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f_onEachFeature(feature, layer) {
 
             layer.on({
             });
         };
-        var geo_json_869a56dba209ba76010785d88eb5514d = L.geoJson(null, {
-                onEachFeature: geo_json_869a56dba209ba76010785d88eb5514d_onEachFeature,
+        var geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f = L.geoJson(null, {
+                onEachFeature: geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f_onEachFeature,
             
-                style: geo_json_869a56dba209ba76010785d88eb5514d_styler,
+                style: geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f_styler,
             ...{
 }
         });
 
-        function geo_json_869a56dba209ba76010785d88eb5514d_add (data) {
-            geo_json_869a56dba209ba76010785d88eb5514d
+        function geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f_add (data) {
+            geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f
                 .addData(data);
         }
-            geo_json_869a56dba209ba76010785d88eb5514d_add({"bbox": [-82.98, 39.98, -82.55, 40.32], "features": [{"bbox": [-82.8, 40.2, -82.55, 40.32], "geometry": {"coordinates": [[[-82.8, 40.2], [-82.55, 40.2], [-82.55, 40.32], [-82.8, 40.32], [-82.8, 40.2]]], "type": "Polygon"}, "id": "4", "properties": {"favorability": "low", "unit_name": "Ground moraine till"}, "type": "Feature"}, {"bbox": [-82.98, 39.98, -82.86, 40.06], "geometry": {"coordinates": [[[-82.98, 39.98], [-82.86, 39.98], [-82.86, 40.06], [-82.98, 40.06], [-82.98, 39.98]]], "type": "Polygon"}, "id": "5", "properties": {"favorability": "low", "unit_name": "Lacustrine clay"}, "type": "Feature"}], "type": "FeatureCollection"});
+            geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f_add({"bbox": [-82.98, 39.98, -82.55, 40.32], "features": [{"bbox": [-82.8, 40.2, -82.55, 40.32], "geometry": {"coordinates": [[[-82.8, 40.2], [-82.55, 40.2], [-82.55, 40.32], [-82.8, 40.32], [-82.8, 40.2]]], "type": "Polygon"}, "id": "4", "properties": {"favorability": "low", "unit_name": "Ground moraine till"}, "type": "Feature"}, {"bbox": [-82.98, 39.98, -82.86, 40.06], "geometry": {"coordinates": [[[-82.98, 39.98], [-82.86, 39.98], [-82.86, 40.06], [-82.98, 40.06], [-82.98, 39.98]]], "type": "Polygon"}, "id": "5", "properties": {"favorability": "low", "unit_name": "Lacustrine clay"}, "type": "Feature"}], "type": "FeatureCollection"});
 
         
     
-    geo_json_869a56dba209ba76010785d88eb5514d.bindTooltip(
+    geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f.bindTooltip(
     function(layer){
     let div = L.DomUtil.create('div');
     
@@ -388,196 +388,196 @@
 });
                      
     
-            var feature_group_303a7709d0aab908f2ae1712bfcffe5c = L.featureGroup(
+            var feature_group_ea2871f17b0fc0a69887f842bc156891 = L.featureGroup(
                 {
 }
             );
         
     
-            var circle_marker_0acab76cb699db563745268d88b769d7 = L.circleMarker(
+            var circle_marker_62a20e083c28b0737f81dbe0bcaaf545 = L.circleMarker(
                 [40.08, -83.12],
                 {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+            ).addTo(feature_group_ea2871f17b0fc0a69887f842bc156891);
         
     
-        var popup_62fd39bc62050d2ef3074de74be6f955 = L.popup({
+        var popup_9fd71002bf2e1e4b0b3f03ced9d803db = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_a74bd9f0bcbedcace812ef3c73cc6895 = $(`<div id="html_a74bd9f0bcbedcace812ef3c73cc6895" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/scioto' target='_blank'>Scioto outwash parcel (demo)</a></b><br>Score: 0.90<br>Distance: 10.6 mi<br>Acres: 85.0<br>Price: $900,000<br>Est. volume: 1,916,783 yd³ (2,683,496 tons)<br>$/ton: $0.34</div>`)[0];
-                popup_62fd39bc62050d2ef3074de74be6f955.setContent(html_a74bd9f0bcbedcace812ef3c73cc6895);
+                var html_8f03ba631a5d37605435fd27ec5d0f42 = $(`<div id="html_8f03ba631a5d37605435fd27ec5d0f42" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/scioto' target='_blank'>Scioto outwash parcel (demo)</a></b><br>Score: 0.85<br>Distance: 10.6 mi<br>Acres: 85.0<br>Price: $900,000<br>Est. volume: 1,916,783 yd³ (2,683,496 tons)<br>$/ton: $0.34</div>`)[0];
+                popup_9fd71002bf2e1e4b0b3f03ced9d803db.setContent(html_8f03ba631a5d37605435fd27ec5d0f42);
             
         
 
-        circle_marker_0acab76cb699db563745268d88b769d7.bindPopup(popup_62fd39bc62050d2ef3074de74be6f955)
+        circle_marker_62a20e083c28b0737f81dbe0bcaaf545.bindPopup(popup_9fd71002bf2e1e4b0b3f03ced9d803db)
         ;
 
         
     
     
-            var circle_marker_cdebf558cda27a144bdfdfb22b816c0a = L.circleMarker(
+            var circle_marker_aaa80f355844a9bd1a00682f68fb4065 = L.circleMarker(
                 [40.21, -82.98],
-                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ea2871f17b0fc0a69887f842bc156891);
         
     
-        var popup_40d59b910f51c42b58bb647451071b2d = L.popup({
+        var popup_c1edd469f97b2e3d26457a40f6d097a1 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_72a529538a1b394819b03a904db2feb0 = $(`<div id="html_72a529538a1b394819b03a904db2feb0" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/alum' target='_blank'>Alum Creek tract (demo)</a></b><br>Score: 0.74<br>Distance: 6.4 mi<br>Acres: 55.0<br>Price: $650,000<br>Est. volume: 1,240,271 yd³ (1,736,380 tons)<br>$/ton: $0.37</div>`)[0];
-                popup_40d59b910f51c42b58bb647451071b2d.setContent(html_72a529538a1b394819b03a904db2feb0);
+                var html_d137a7946b29a6964ce6b62d8e8a9d28 = $(`<div id="html_d137a7946b29a6964ce6b62d8e8a9d28" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/alum' target='_blank'>Alum Creek tract (demo)</a></b><br>Score: 0.57<br>Distance: 6.4 mi<br>Acres: 55.0<br>Price: $650,000<br>Est. volume: 1,240,271 yd³ (1,736,380 tons)<br>$/ton: $0.37</div>`)[0];
+                popup_c1edd469f97b2e3d26457a40f6d097a1.setContent(html_d137a7946b29a6964ce6b62d8e8a9d28);
             
         
 
-        circle_marker_cdebf558cda27a144bdfdfb22b816c0a.bindPopup(popup_40d59b910f51c42b58bb647451071b2d)
+        circle_marker_aaa80f355844a9bd1a00682f68fb4065.bindPopup(popup_c1edd469f97b2e3d26457a40f6d097a1)
         ;
 
         
     
     
-            var circle_marker_590b77700e18f6e65b615a686b385ee9 = L.circleMarker(
+            var circle_marker_d5df821425abb6ccf2dc36bd77ec2156 = L.circleMarker(
                 [40.15, -82.89],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+            ).addTo(feature_group_ea2871f17b0fc0a69887f842bc156891);
         
     
-        var popup_66865fd0790cacb23b8d270243580246 = L.popup({
+        var popup_ce5bed297501b6a837cac1ea635ab7e0 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_43bec4b3715f82db22fce43898d9c340 = $(`<div id="html_43bec4b3715f82db22fce43898d9c340" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/hoover' target='_blank'>Hoover reservoir edge (demo)</a></b><br>Score: 0.51<br>Distance: 2.6 mi<br>Acres: 22.0<br>Price: $550,000<br>Est. volume: 619,325 yd³ (867,055 tons)<br>$/ton: $0.63</div>`)[0];
-                popup_66865fd0790cacb23b8d270243580246.setContent(html_43bec4b3715f82db22fce43898d9c340);
+                var html_d791065b95b903f3544fe8b77c0a67ba = $(`<div id="html_d791065b95b903f3544fe8b77c0a67ba" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/hoover' target='_blank'>Hoover reservoir edge (demo)</a></b><br>Score: 0.56<br>Distance: 2.6 mi<br>Acres: 22.0<br>Price: $550,000<br>Est. volume: 619,325 yd³ (867,055 tons)<br>$/ton: $0.63</div>`)[0];
+                popup_ce5bed297501b6a837cac1ea635ab7e0.setContent(html_d791065b95b903f3544fe8b77c0a67ba);
             
         
 
-        circle_marker_590b77700e18f6e65b615a686b385ee9.bindPopup(popup_66865fd0790cacb23b8d270243580246)
+        circle_marker_d5df821425abb6ccf2dc36bd77ec2156.bindPopup(popup_ce5bed297501b6a837cac1ea635ab7e0)
         ;
 
         
     
     
-            var circle_marker_a9d47ef260479c73cf6477dcf5609992 = L.circleMarker(
-                [40.18, -82.87],
-                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
-        
-    
-        var popup_a71c9ef503e29708ca3cd1a22805b2f4 = L.popup({
-  "maxWidth": 320,
-});
-
-        
-            
-                var html_d1e4c4f26ed442905f8bc3a2458763a5 = $(`<div id="html_d1e4c4f26ed442905f8bc3a2458763a5" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/bigwalnut' target='_blank'>Big Walnut bottomland (demo)</a></b><br>Score: 0.33<br>Distance: 4.9 mi<br>Acres: 32.0<br>Price: $420,000<br>Est. volume: 360,806 yd³ (505,129 tons)<br>$/ton: $0.83</div>`)[0];
-                popup_a71c9ef503e29708ca3cd1a22805b2f4.setContent(html_d1e4c4f26ed442905f8bc3a2458763a5);
-            
-        
-
-        circle_marker_a9d47ef260479c73cf6477dcf5609992.bindPopup(popup_a71c9ef503e29708ca3cd1a22805b2f4)
-        ;
-
-        
-    
-    
-            var circle_marker_e7ad1389a3a2330a7a9d6ac3428577bd = L.circleMarker(
+            var circle_marker_b578501bafdf65496ce4043a993fdf99 = L.circleMarker(
                 [40.03, -82.93],
-                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ea2871f17b0fc0a69887f842bc156891);
         
     
-        var popup_7d1ed5b3193c293d0faf6c6ed014d497 = L.popup({
+        var popup_5900446d2913d7178aeee4513c8b939a = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_ab752b49ed5332e94c18b9ae35ae095a = $(`<div id="html_ab752b49ed5332e94c18b9ae35ae095a" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/south' target='_blank'>South of town (demo)</a></b><br>Score: 0.30<br>Distance: 6.6 mi<br>Acres: 48.0<br>Price: $310,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
-                popup_7d1ed5b3193c293d0faf6c6ed014d497.setContent(html_ab752b49ed5332e94c18b9ae35ae095a);
+                var html_decebaf7a2f41b69583910658204a531 = $(`<div id="html_decebaf7a2f41b69583910658204a531" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/south' target='_blank'>South of town (demo)</a></b><br>Score: 0.47<br>Distance: 6.6 mi<br>Acres: 48.0<br>Price: $310,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
+                popup_5900446d2913d7178aeee4513c8b939a.setContent(html_decebaf7a2f41b69583910658204a531);
             
         
 
-        circle_marker_e7ad1389a3a2330a7a9d6ac3428577bd.bindPopup(popup_7d1ed5b3193c293d0faf6c6ed014d497)
+        circle_marker_b578501bafdf65496ce4043a993fdf99.bindPopup(popup_5900446d2913d7178aeee4513c8b939a)
         ;
 
         
     
     
-            var circle_marker_e0abba6c3fcebb35f0cead3c8c459f35 = L.circleMarker(
+            var circle_marker_ab432f1491812a09224f6b94e0efeeee = L.circleMarker(
+                [40.18, -82.87],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ea2871f17b0fc0a69887f842bc156891);
+        
+    
+        var popup_a760707620f10c2e988f66ed46c00ea0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_58b1c6bc66c8d1914a4c7cb4e5d56ff4 = $(`<div id="html_58b1c6bc66c8d1914a4c7cb4e5d56ff4" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/bigwalnut' target='_blank'>Big Walnut bottomland (demo)</a></b><br>Score: 0.43<br>Distance: 4.9 mi<br>Acres: 32.0<br>Price: $420,000<br>Est. volume: 360,806 yd³ (505,129 tons)<br>$/ton: $0.83</div>`)[0];
+                popup_a760707620f10c2e988f66ed46c00ea0.setContent(html_58b1c6bc66c8d1914a4c7cb4e5d56ff4);
+            
+        
+
+        circle_marker_ab432f1491812a09224f6b94e0efeeee.bindPopup(popup_a760707620f10c2e988f66ed46c00ea0)
+        ;
+
+        
+    
+    
+            var circle_marker_8963be9e21a4e68009f1d6444b049795 = L.circleMarker(
                 [40.26, -82.7],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+            ).addTo(feature_group_ea2871f17b0fc0a69887f842bc156891);
         
     
-        var popup_bf67b810bf45682adeb55bd0440e98f7 = L.popup({
+        var popup_668e6e91ad834d8e17e3f9819b5994ad = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_fe8e47fef646cf4af43091ed8637ef57 = $(`<div id="html_fe8e47fef646cf4af43091ed8637ef57" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/till' target='_blank'>Till upland (demo)</a></b><br>Score: 0.20<br>Distance: 15.2 mi<br>Acres: 40.0<br>Price: $280,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
-                popup_bf67b810bf45682adeb55bd0440e98f7.setContent(html_fe8e47fef646cf4af43091ed8637ef57);
+                var html_ec02c21a3c5285058b32f37f4c45d3a8 = $(`<div id="html_ec02c21a3c5285058b32f37f4c45d3a8" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/till' target='_blank'>Till upland (demo)</a></b><br>Score: 0.23<br>Distance: 15.2 mi<br>Acres: 40.0<br>Price: $280,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
+                popup_668e6e91ad834d8e17e3f9819b5994ad.setContent(html_ec02c21a3c5285058b32f37f4c45d3a8);
             
         
 
-        circle_marker_e0abba6c3fcebb35f0cead3c8c459f35.bindPopup(popup_bf67b810bf45682adeb55bd0440e98f7)
+        circle_marker_8963be9e21a4e68009f1d6444b049795.bindPopup(popup_668e6e91ad834d8e17e3f9819b5994ad)
         ;
 
         
     
     
-            var circle_marker_bdf92a6028e54102fb67f968746e1522 = L.circleMarker(
+            var circle_marker_0b0ea39c89f08175c14828b3f9e7290f = L.circleMarker(
                 [40.18, -82.5],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(feature_group_303a7709d0aab908f2ae1712bfcffe5c);
+            ).addTo(feature_group_ea2871f17b0fc0a69887f842bc156891);
         
     
-        var popup_ac656a4d799eb1b0da5606aa4b977b7c = L.popup({
+        var popup_0b51885a1592f487ce640ea149560cd2 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_534f49a203e7ae80e0a48d11ad030500 = $(`<div id="html_534f49a203e7ae80e0a48d11ad030500" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/east' target='_blank'>Far east (demo)</a></b><br>Score: 0.10<br>Distance: 23.0 mi<br>Acres: 70.0<br>Price: $190,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
-                popup_ac656a4d799eb1b0da5606aa4b977b7c.setContent(html_534f49a203e7ae80e0a48d11ad030500);
+                var html_3ca94fcdc37f40a3eb708e7cbd0c4c34 = $(`<div id="html_3ca94fcdc37f40a3eb708e7cbd0c4c34" style="width: 100.0%; height: 100.0%;"><b><a href='https://example.com/east' target='_blank'>Far east (demo)</a></b><br>Score: 0.11<br>Distance: 23.0 mi<br>Acres: 70.0<br>Price: $190,000<br>Est. volume: — yd³ (— tons)<br>$/ton: —</div>`)[0];
+                popup_0b51885a1592f487ce640ea149560cd2.setContent(html_3ca94fcdc37f40a3eb708e7cbd0c4c34);
             
         
 
-        circle_marker_bdf92a6028e54102fb67f968746e1522.bindPopup(popup_ac656a4d799eb1b0da5606aa4b977b7c)
+        circle_marker_0b0ea39c89f08175c14828b3f9e7290f.bindPopup(popup_0b51885a1592f487ce640ea149560cd2)
         ;
 
         
     
     
-            feature_group_303a7709d0aab908f2ae1712bfcffe5c.addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+            feature_group_ea2871f17b0fc0a69887f842bc156891.addTo(map_a20d7c18f2ca09aa886e62c1672fb4e5);
         
     
-            var layer_control_150df99cce80d1c826257b1be3a308ce_layers = {
+            var layer_control_c3de686669223b0c5b0d491f40cfc6fd_layers = {
                 base_layers : {
-                    "openstreetmap" : tile_layer_08d3abd581a8b76487a915cb129bbb34,
+                    "openstreetmap" : tile_layer_8b6a0ad4d14c80b09628c5622308919e,
                 },
                 overlays :  {
-                    "Geology: high favorability" : geo_json_f7c18bdc05d1332525e54680b1cbdd05,
-                    "Geology: medium favorability" : geo_json_e50738078e23e484cb7b6d503695358f,
-                    "Geology: low favorability" : geo_json_869a56dba209ba76010785d88eb5514d,
-                    "Listings" : feature_group_303a7709d0aab908f2ae1712bfcffe5c,
+                    "Geology: high favorability" : geo_json_b8b6cd5f5c5ac3e4e7d02c5fa98e0b6d,
+                    "Geology: medium favorability" : geo_json_cafd5c265d93a5cf37b6e7200e9caa6d,
+                    "Geology: low favorability" : geo_json_f7e32f3f5e75a4ce02b4345ddf0e1a9f,
+                    "Listings" : feature_group_ea2871f17b0fc0a69887f842bc156891,
                 },
             };
-            let layer_control_150df99cce80d1c826257b1be3a308ce = L.control.layers(
-                layer_control_150df99cce80d1c826257b1be3a308ce_layers.base_layers,
-                layer_control_150df99cce80d1c826257b1be3a308ce_layers.overlays,
+            let layer_control_c3de686669223b0c5b0d491f40cfc6fd = L.control.layers(
+                layer_control_c3de686669223b0c5b0d491f40cfc6fd_layers.base_layers,
+                layer_control_c3de686669223b0c5b0d491f40cfc6fd_layers.overlays,
                 {
   "position": "topright",
   "collapsed": false,
   "autoZIndex": true,
 }
-            ).addTo(map_19b6a6147426b6c9e26f1fe215fc994a);
+            ).addTo(map_a20d7c18f2ca09aa886e62c1672fb4e5);
 
         
 </script>
