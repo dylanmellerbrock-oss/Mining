@@ -54,6 +54,22 @@ def _read_csv_upload(upload) -> pd.DataFrame:
     return pd.read_csv(upload)
 
 
+def _fetch_all_with_progress(force: bool) -> None:
+    steps = [
+        ("Surficial geology (ODNR Quaternary 500K)", geology.fetch_geology),
+        ("Bedrock geology (ODNR Bedrock 500K)", bedrock.fetch_bedrock),
+        ("Rail network (NTAD North American Rail)", rail.fetch_rail),
+    ]
+    for label, fn in steps:
+        with st.spinner(f"Fetching: {label}"):
+            try:
+                path = fn(refresh=force)
+                st.success(f"{label} → {path}")
+            except Exception as exc:
+                st.error(f"{label} failed: {exc}")
+                break
+
+
 def _load_real_layers(use_bedrock: bool, use_rail: bool):
     geo = geology.load_geology() if config.GEOLOGY_CACHE.exists() else None
     bed = bedrock.load_bedrock() if (use_bedrock and config.BEDROCK_CACHE.exists()) else None
@@ -81,6 +97,16 @@ def main() -> None:
                 "Listings CSV (title, url, price, acres, lat, lon, county, city)",
                 type=["csv"],
             )
+
+        with st.expander("Fetch real GIS data (ArcGIS REST)"):
+            st.caption(
+                "Pulls surficial geology, bedrock geology, and rail from the "
+                "ODNR / NTAD feature services configured in `config.py`. "
+                "Writes to `data/*.gpkg`."
+            )
+            force = st.checkbox("Ignore cache and re-fetch", value=False)
+            if st.button("Fetch surficial + bedrock + rail"):
+                _fetch_all_with_progress(force=force)
 
         st.header("Screening parameters")
         radius_mi = st.slider("Radius from Westerville (mi)", 5, 100, int(config.DEFAULT_RADIUS_MI), 5)

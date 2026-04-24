@@ -21,17 +21,20 @@ Geopandas pulls in GDAL; on Debian/Ubuntu you may need `apt-get install gdal-bin
 ## Usage
 
 ```
-quarry-screen fetch-geology                   # cache ODGS glacial data (once)
-quarry-screen fetch-bedrock                   # cache ODGS bedrock (Dc/Dd filter)
-quarry-screen fetch-rail                      # cache Ohio rail network
+quarry-screen fetch-all                       # pull surficial + bedrock + rail via ArcGIS REST
 quarry-screen scrape-listings --radius-mi 40 --min-acres 20 -o data/listings.csv
 quarry-screen screen --listings data/listings.csv -o output/
 ```
 
+`fetch-all` hits the ODNR and NTAD feature services configured in
+`quarry_screen/config.py` — no env vars or shapefile URLs required out
+of the box. If you prefer to grab layers individually, the
+`fetch-geology`, `fetch-bedrock`, and `fetch-rail` subcommands still
+exist. The bedrock / rail steps are optional; `screen` falls back to
+surficial-only scoring if those caches are missing.
+
 Open `output/map.html` for the interactive map, and `output/ranked.csv` for
-the sorted shortlist. The `fetch-bedrock` and `fetch-rail` steps are
-optional — `screen` falls back to surficial-only scoring if those caches
-are missing.
+the sorted shortlist.
 
 Or do it all in one go:
 
@@ -94,6 +97,14 @@ synthetic Westerville fixtures.
   GIS downloads for Quaternary / glacial geology.
 - LandWatch public listing pages.
 
-Set `ODGS_GLACIAL_URL`, `ODGS_BEDROCK_URL`, and `OHIO_RAIL_URL` env vars to
-the current shapefile/GeoPackage downloads (or local paths) before running
-the corresponding `fetch-*` command.
+Default data sources are the public ArcGIS REST feature services:
+
+- ODNR Quaternary Geology 500K — `Quaternary_Geology_500K_AGOL/FeatureServer/2`
+- ODNR Bedrock Geology 500K — `Bedrock_Geology_500K_AGOL/FeatureServer/3`
+- USDOT BTS NTAD North American Rail Network Lines — filtered to `STATEAB='OH'`
+  and clipped to the Ohio bounding box
+
+Override with `ODGS_GLACIAL_URL`, `ODGS_BEDROCK_URL`, `OHIO_RAIL_URL`
+(any of: another REST layer URL, a zipped shapefile URL, or a local
+file path). Set `OHIO_RAIL_WHERE=""` to disable the state-code filter
+on custom rail services.

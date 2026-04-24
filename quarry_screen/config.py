@@ -37,23 +37,35 @@ USER_AGENT = os.environ.get(
 # ODGS publishes Quaternary/glacial geology as a zipped shapefile on their
 # GIS downloads page (geosurvey.ohiodnr.gov). We accept either a direct
 # .zip/.gpkg URL or a local path.
+# Data source URLs default to ArcGIS REST feature services — no shapefile
+# download required. Override with env vars if the endpoint moves or you
+# want to point at a local shapefile/GeoPackage instead.
+
+# ODNR Quaternary (glacial/surficial) geology, 1:500K. Layer 2 = geologic
+# units (polygons).
 ODGS_GLACIAL_URL = os.environ.get(
     "ODGS_GLACIAL_URL",
-    # Placeholder — operators should set this env var to the current ODGS
-    # download link (or a local file path) before running fetch-geology.
-    "",
+    "https://gis.ohiodnr.gov/arcgis/rest/services/DGS_Services/Quaternary_Geology_500K_AGOL/FeatureServer/2",
 )
 
-# ODGS bedrock geology (Paleozoic). Columbus Limestone ("Dc") is the prime
-# aggregate host in central Ohio; Delaware Limestone ("Dd") is a decent
-# secondary. Set this env var to the current ODGS bedrock download URL or a
-# local shapefile/GeoPackage path.
-ODGS_BEDROCK_URL = os.environ.get("ODGS_BEDROCK_URL", "")
+# ODNR bedrock geology, 1:500K. Layer 3 = geologic units (polygons).
+# Columbus Limestone ("Dc") is the prime aggregate host in central Ohio;
+# Delaware Limestone ("Dd") is a decent secondary.
+ODGS_BEDROCK_URL = os.environ.get(
+    "ODGS_BEDROCK_URL",
+    "https://gis.ohiodnr.gov/arcgis/rest/services/DGS_Services/Bedrock_Geology_500K_AGOL/FeatureServer/3",
+)
 
-# Ohio rail network — ODOT publishes an "Ohio Rail System" layer; USDOT BTS
-# NTAD "North American Rail Network" also works (clip to OH). Accepts a
-# remote URL or local path.
-OHIO_RAIL_URL = os.environ.get("OHIO_RAIL_URL", "")
+# USDOT BTS NTAD "North American Rail Network Lines". Statewide or national
+# coverage — we clip to the Ohio bounding box at query time.
+OHIO_RAIL_URL = os.environ.get(
+    "OHIO_RAIL_URL",
+    "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_North_American_Rail_Network_Lines/FeatureServer/0",
+)
+
+# State filter expression for the rail layer. NTAD uses `STATEAB`; set to
+# empty string to disable the WHERE and rely on bbox clipping alone.
+OHIO_RAIL_WHERE = os.environ.get("OHIO_RAIL_WHERE", "STATEAB='OH'")
 
 # Projection for area math in central Ohio (UTM 17N, meters).
 WORKING_CRS = "EPSG:26917"

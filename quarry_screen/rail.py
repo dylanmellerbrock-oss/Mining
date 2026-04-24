@@ -13,7 +13,7 @@ import pandas as pd
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from . import config
+from . import arcgis, config
 
 log = logging.getLogger(__name__)
 
@@ -29,18 +29,38 @@ def _download(url: str, dest: Path) -> None:
 
 
 def fetch_rail(url: str | None = None, refresh: bool = False) -> Path:
-    """Download and cache the Ohio rail network as GeoPackage."""
+    """Download and cache the Ohio rail network as GeoPackage.
+
+    When `url` is an ArcGIS REST feature-layer URL (the default, pointing
+    at USDOT BTS NTAD), the fetch uses a WHERE clause + Ohio bounding box
+    to pull just Ohio features. If the WHERE fails (wrong field name for
+    a non-NTAD service) it falls back to bbox-only clipping.
+    """
     url = url or config.OHIO_RAIL_URL
     if not url:
         raise RuntimeError(
             "No rail source configured. Set OHIO_RAIL_URL or pass --source "
-            "to a shapefile/GeoPackage URL or local path."
+            "to an ArcGIS REST URL, shapefile/GeoPackage, or local path."
         )
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     out = config.RAIL_CACHE
     if out.exists() and not refresh:
         log.info("Using cached rail network at %s", out)
+        return out
+
+    if arcgis.is_arcgis_url(url):
+        where = config.OHIO_RAIL_WHERE or "1=1"
+        try:
+            gdf = arcgis.query_feature_layer(url, where=where, bbox=arcgis.OHIO_BBOX)
+        except Exception as exc:
+            log.warning("Rail WHERE=%r failed (%s); retrying with bbox only", where, exc)
+            gdf = arcgis.query_feature_layer(url, where="1=1", bbox=arcgis.OHIO_BBOX)
+        if gdf.crs is None:
+            gdf = gdf.set_crs(config.WGS84)
+        gdf = gdf[["geometry"]].copy()
+        arcgis.save_gpkg(gdf, out)
+        log.info("Wrote %s (%d features) from ArcGIS REST", out, len(gdf))
         return out
 
     with tempfile.TemporaryDirectory() as tmp:

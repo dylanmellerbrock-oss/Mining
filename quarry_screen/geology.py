@@ -12,7 +12,7 @@ import geopandas as gpd
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from . import config
+from . import arcgis, config
 
 log = logging.getLogger(__name__)
 
@@ -39,22 +39,31 @@ def _download(url: str, dest: Path) -> None:
 
 
 def fetch_geology(url: str | None = None, refresh: bool = False) -> Path:
-    """Download and cache the ODGS glacial geology layer as GeoPackage.
+    """Download and cache the ODGS surficial geology layer as GeoPackage.
 
-    Accepts either a remote URL (zipped shapefile or direct .gpkg) or a
-    local filesystem path. Returns the path to the cached .gpkg.
+    Accepts an ArcGIS REST feature-layer URL (the default — see
+    `config.ODGS_GLACIAL_URL`), a shapefile ZIP / GeoPackage URL, or a
+    local filesystem path. Returns the path to the cached `.gpkg`.
     """
     url = url or config.ODGS_GLACIAL_URL
     if not url:
         raise RuntimeError(
             "No ODGS source configured. Set ODGS_GLACIAL_URL env var "
-            "or pass --source to a shapefile/GeoPackage URL or local path."
+            "or pass --source to an ArcGIS REST URL, shapefile/GeoPackage, "
+            "or local path."
         )
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     out = config.GEOLOGY_CACHE
     if out.exists() and not refresh:
         log.info("Using cached geology at %s", out)
+        return out
+
+    if arcgis.is_arcgis_url(url):
+        gdf = arcgis.query_feature_layer(url)
+        gdf = _prepare_favorability(gdf)
+        arcgis.save_gpkg(gdf, out)
+        log.info("Wrote %s (%d polygons) from ArcGIS REST", out, len(gdf))
         return out
 
     with tempfile.TemporaryDirectory() as tmp:

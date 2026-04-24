@@ -12,7 +12,7 @@ import geopandas as gpd
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from . import config
+from . import arcgis, config
 
 log = logging.getLogger(__name__)
 
@@ -56,13 +56,21 @@ def fetch_bedrock(url: str | None = None, refresh: bool = False) -> Path:
     if not url:
         raise RuntimeError(
             "No ODGS bedrock source configured. Set ODGS_BEDROCK_URL or "
-            "pass --source to a shapefile/GeoPackage URL or local path."
+            "pass --source to an ArcGIS REST URL, shapefile/GeoPackage, "
+            "or local path."
         )
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     out = config.BEDROCK_CACHE
     if out.exists() and not refresh:
         log.info("Using cached bedrock at %s", out)
+        return out
+
+    if arcgis.is_arcgis_url(url):
+        gdf = arcgis.query_feature_layer(url)
+        gdf = _prepare_bedrock(gdf)
+        arcgis.save_gpkg(gdf, out)
+        log.info("Wrote %s (%d polygons) from ArcGIS REST", out, len(gdf))
         return out
 
     with tempfile.TemporaryDirectory() as tmp:

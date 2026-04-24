@@ -56,6 +56,16 @@ def cmd_fetch_rail(source: str | None, refresh: bool) -> None:
     click.echo(f"Rail network cached at {path}")
 
 
+@cli.command("fetch-all")
+@click.option("--refresh", is_flag=True, help="Ignore caches and re-fetch every layer.")
+def cmd_fetch_all(refresh: bool) -> None:
+    """Fetch surficial geology, bedrock geology, and rail via the ArcGIS
+    REST APIs configured in `config.py`."""
+    click.echo(f"Surficial: {geology.fetch_geology(refresh=refresh)}")
+    click.echo(f"Bedrock:   {bedrock.fetch_bedrock(refresh=refresh)}")
+    click.echo(f"Rail:      {rail.fetch_rail(refresh=refresh)}")
+
+
 @cli.command("scrape-listings")
 @click.option("--min-acres", type=int, default=config.DEFAULT_MIN_ACRES, show_default=True)
 @click.option("--max-price", type=int, default=config.DEFAULT_MAX_PRICE, show_default=True)
