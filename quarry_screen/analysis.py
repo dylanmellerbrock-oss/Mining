@@ -9,7 +9,7 @@ import geopandas as gpd
 import pandas as pd
 from shapely.geometry import Point
 
-from . import config
+from . import config, rail as rail_mod
 
 
 def haversine_mi(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -107,9 +107,29 @@ def overlay_and_volume(
     return out
 
 
+def add_rail_distance(
+    listings_gdf: gpd.GeoDataFrame,
+    rail_gdf: gpd.GeoDataFrame | None,
+) -> gpd.GeoDataFrame:
+    """Attach a `rail_dist_mi` column; NaN if no rail layer supplied."""
+    out = listings_gdf.copy()
+    if rail_gdf is None or rail_gdf.empty or out.empty:
+        out["rail_dist_mi"] = float("nan")
+        return out
+    out["rail_dist_mi"] = rail_mod.compute_rail_distance_mi(out, rail_gdf).to_numpy()
+    return out
+
+
 def score(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    """Composite score: higher = better. Normalized tons minus normalized
-    distance and price-per-ton.
+    """Composite score: higher = better.
+
+    Components (weights sum to 1.0 across whatever's available):
+      - surficial tons (aggregate potential)
+      - bedrock class (Dc/Dd favorability)  -- if `bedrock_class` present
+      - rail proximity                       -- if `rail_dist_mi` present
+      - distance to Westerville              (transport to home market)
+      - price-per-ton                        (value)
+    Missing components drop out and the remaining weights rebalance.
     """
     if gdf.empty:
         return gdf.assign(score=[])
@@ -122,17 +142,40 @@ def score(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
         normed = (s - lo) / (hi - lo)
         return normed if higher_is_better else 1 - normed
 
-    tons_n = _norm(gdf["tons_est"], higher_is_better=True).fillna(0)
-    dist_n = _norm(gdf["distance_mi"], higher_is_better=False).fillna(0)
-    ppt_n = _norm(gdf["price_per_ton"], higher_is_better=False).fillna(0.5)
+    components: list[tuple[pd.Series, float]] = []
 
+    tons_n = _norm(gdf["tons_est"], higher_is_better=True).fillna(0)
+    components.append((tons_n, 0.35))
+
+    if "bedrock_class" in gdf.columns:
+        bedrock_n = gdf["bedrock_class"].map(config.BEDROCK_WEIGHT).fillna(0.0)
+        components.append((bedrock_n, 0.20))
+
+    if "rail_dist_mi" in gdf.columns:
+        rail_n = gdf["rail_dist_mi"].map(rail_mod.rail_score).fillna(0.0)
+        components.append((rail_n, 0.15))
+
+    dist_n = _norm(gdf["distance_mi"], higher_is_better=False).fillna(0)
+    components.append((dist_n, 0.15))
+
+    ppt_n = _norm(gdf["price_per_ton"], higher_is_better=False).fillna(0.5)
+    components.append((ppt_n, 0.15))
+
+    total_weight = sum(w for _, w in components)
     out = gdf.copy()
-    out["score"] = 0.55 * tons_n + 0.25 * dist_n + 0.20 * ppt_n
+    out["score"] = sum(series * (weight / total_weight) for series, weight in components)
+
+    # Informational: rough haul-cost uplift for listings with a rail distance.
+    if "rail_dist_mi" in out.columns:
+        out["haul_cost_per_ton"] = out["rail_dist_mi"].apply(
+            lambda d: d * config.HAUL_COST_PER_TON_MILE if pd.notna(d) else float("nan")
+        )
+
     return out.sort_values("score", ascending=False).reset_index(drop=True)
 
 
-def ranked_columns() -> Iterable[str]:
-    return (
+def ranked_columns(gdf: gpd.GeoDataFrame | None = None) -> Iterable[str]:
+    base = [
         "score",
         "title",
         "url",
@@ -145,6 +188,9 @@ def ranked_columns() -> Iterable[str]:
         "volume_yd3",
         "tons_est",
         "price_per_ton",
-        "lat",
-        "lon",
-    )
+    ]
+    optional = ["bedrock_class", "bedrock_unit_code", "rail_dist_mi", "haul_cost_per_ton"]
+    if gdf is not None:
+        base.extend(c for c in optional if c in gdf.columns)
+    base.extend(["lat", "lon"])
+    return base

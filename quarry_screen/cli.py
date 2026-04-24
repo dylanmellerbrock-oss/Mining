@@ -8,7 +8,7 @@ from pathlib import Path
 
 import click
 
-from . import analysis, config, geology, listings, mapview
+from . import analysis, bedrock, config, geology, listings, mapview, rail
 
 
 def _setup_logging(verbose: bool) -> None:
@@ -34,6 +34,24 @@ def cmd_fetch_geology(source: str | None, refresh: bool) -> None:
     """Download and cache ODGS surficial/glacial geology."""
     path = geology.fetch_geology(url=source, refresh=refresh)
     click.echo(f"Geology cached at {path}")
+
+
+@cli.command("fetch-bedrock")
+@click.option("--source", default=None, help="Override ODGS bedrock URL or local path.")
+@click.option("--refresh", is_flag=True, help="Ignore cache and re-download.")
+def cmd_fetch_bedrock(source: str | None, refresh: bool) -> None:
+    """Download and cache ODGS bedrock geology (Columbus/Delaware Limestone)."""
+    path = bedrock.fetch_bedrock(url=source, refresh=refresh)
+    click.echo(f"Bedrock cached at {path}")
+
+
+@cli.command("fetch-rail")
+@click.option("--source", default=None, help="Override Ohio rail URL or local path.")
+@click.option("--refresh", is_flag=True, help="Ignore cache and re-download.")
+def cmd_fetch_rail(source: str | None, refresh: bool) -> None:
+    """Download and cache the Ohio rail network."""
+    path = rail.fetch_rail(url=source, refresh=refresh)
+    click.echo(f"Rail network cached at {path}")
 
 
 @cli.command("scrape-listings")
@@ -75,6 +93,20 @@ def cmd_scrape_listings(
     default=config.GEOLOGY_CACHE,
     show_default=True,
 )
+@click.option(
+    "--bedrock", "bedrock_path",
+    type=click.Path(dir_okay=False, path_type=Path),
+    default=config.BEDROCK_CACHE,
+    show_default=True,
+    help="Bedrock GeoPackage; skipped if the file is absent.",
+)
+@click.option(
+    "--rail", "rail_path",
+    type=click.Path(dir_okay=False, path_type=Path),
+    default=config.RAIL_CACHE,
+    show_default=True,
+    help="Rail network GeoPackage; skipped if the file is absent.",
+)
 @click.option("--radius-mi", type=float, default=config.DEFAULT_RADIUS_MI, show_default=True)
 @click.option("--thickness-ft", type=float, default=config.DEFAULT_THICKNESS_FT, show_default=True)
 @click.option("--recovery", type=float, default=config.DEFAULT_RECOVERY, show_default=True)
@@ -87,6 +119,8 @@ def cmd_scrape_listings(
 def cmd_screen(
     listings_path: Path,
     geology_path: Path,
+    bedrock_path: Path,
+    rail_path: Path,
     radius_mi: float,
     thickness_ft: float,
     recovery: float,
@@ -104,11 +138,26 @@ def cmd_screen(
     geo = geology.load_geology(geology_path)
     gdf = analysis.listings_to_gdf(listings_df)
     gdf = analysis.overlay_and_volume(gdf, geo, thickness_ft=thickness_ft, recovery=recovery)
+
+    if bedrock_path and Path(bedrock_path).exists():
+        bed = bedrock.load_bedrock(bedrock_path)
+        gdf = bedrock.classify_parcels(gdf, bed)
+        click.echo(f"Bedrock layer: {len(bed)} polygons from {bedrock_path}")
+    else:
+        click.echo("Bedrock layer not found; skipping Dc/Dd filter.", err=True)
+
+    if rail_path and Path(rail_path).exists():
+        rails = rail.load_rail(rail_path)
+        gdf = analysis.add_rail_distance(gdf, rails)
+        click.echo(f"Rail layer: {len(rails)} features from {rail_path}")
+    else:
+        click.echo("Rail layer not found; skipping rail-proximity score.", err=True)
+
     gdf = analysis.score(gdf)
 
     output.mkdir(parents=True, exist_ok=True)
     ranked_csv = output / "ranked.csv"
-    gdf[list(analysis.ranked_columns())].to_csv(ranked_csv, index=False)
+    gdf[list(analysis.ranked_columns(gdf))].to_csv(ranked_csv, index=False)
 
     map_html = mapview.render(gdf, geo, output / "map.html", radius_mi=radius_mi)
 
@@ -145,6 +194,8 @@ def cmd_run_all(
         cmd_screen,
         listings_path=config.LISTINGS_CACHE,
         geology_path=config.GEOLOGY_CACHE,
+        bedrock_path=config.BEDROCK_CACHE,
+        rail_path=config.RAIL_CACHE,
         radius_mi=radius_mi,
         thickness_ft=thickness_ft,
         recovery=recovery,

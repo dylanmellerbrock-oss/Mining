@@ -23,6 +23,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
 OUTPUT_DIR = REPO_ROOT / "output"
 GEOLOGY_CACHE = DATA_DIR / "odgs_glacial.gpkg"
+BEDROCK_CACHE = DATA_DIR / "odgs_bedrock.gpkg"
+RAIL_CACHE = DATA_DIR / "ohio_rail.gpkg"
 LISTINGS_CACHE = DATA_DIR / "listings.csv"
 
 # Scraper identity — please set a real contact.
@@ -41,6 +43,17 @@ ODGS_GLACIAL_URL = os.environ.get(
     # download link (or a local file path) before running fetch-geology.
     "",
 )
+
+# ODGS bedrock geology (Paleozoic). Columbus Limestone ("Dc") is the prime
+# aggregate host in central Ohio; Delaware Limestone ("Dd") is a decent
+# secondary. Set this env var to the current ODGS bedrock download URL or a
+# local shapefile/GeoPackage path.
+ODGS_BEDROCK_URL = os.environ.get("ODGS_BEDROCK_URL", "")
+
+# Ohio rail network — ODOT publishes an "Ohio Rail System" layer; USDOT BTS
+# NTAD "North American Rail Network" also works (clip to OH). Accepts a
+# remote URL or local path.
+OHIO_RAIL_URL = os.environ.get("OHIO_RAIL_URL", "")
 
 # Projection for area math in central Ohio (UTM 17N, meters).
 WORKING_CRS = "EPSG:26917"
@@ -84,3 +97,38 @@ FAVORABILITY_RULES: list[tuple[str, str]] = [
 
 FAVORABILITY_WEIGHT = {"high": 1.0, "medium": 0.5, "low": 0.0}
 FAVORABILITY_COLOR = {"high": "#2a9d8f", "medium": "#e9c46a", "low": "#adb5bd"}
+
+# Bedrock classifier — keyed on ODGS unit *code* (exact, case-insensitive)
+# first; unit *name* substrings are the fallback.
+BEDROCK_CODE_RULES: dict[str, str] = {
+    "dc": "high",     # Columbus Limestone
+    "dco": "high",    # Columbus/Delaware undifferentiated
+    "dd": "medium",   # Delaware Limestone
+    "sco": "medium",  # Columbus Ls. (older map sheets)
+    "sd": "medium",   # Delaware Ls. (older map sheets)
+}
+
+BEDROCK_NAME_RULES: list[tuple[str, str]] = [
+    ("columbus limestone", "high"),
+    ("delaware limestone", "medium"),
+    ("dolomite", "medium"),
+    ("limestone", "medium"),
+    ("shale", "low"),
+    ("sandstone", "low"),
+    ("siltstone", "low"),
+    ("coal", "low"),
+    ("mudstone", "low"),
+]
+
+BEDROCK_WEIGHT = {"high": 1.0, "medium": 0.5, "low": 0.0}
+BEDROCK_COLOR = {"high": "#264653", "medium": "#8ab17d", "low": "#adb5bd"}
+
+# Rail-proximity scoring (miles → 0..1). Direct frontage = 1.0, within 2 mi
+# = 0.5 linear fall, within 10 mi = 0.1 linear fall, beyond that = 0.
+RAIL_FRONTAGE_MI = 0.1
+RAIL_NEAR_MI = 2.0
+RAIL_FAR_MI = 10.0
+
+# Hauling-cost penalty ($/ton per mile beyond direct frontage). Only used
+# for informational output in the ranked CSV; does not feed the 0..1 score.
+HAUL_COST_PER_TON_MILE = 0.20
